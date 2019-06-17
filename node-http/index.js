@@ -1,6 +1,6 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const http = require('http'); //imports the http module
+const fs = require('fs');     //imports the file system core module which allows to read and write files 
+const path = require('path'); // imports the path core module which used to specify the path of the files
 const hostname='localhost';
 const port = 3000;
 const server = http.createServer((req,res)=>{
@@ -24,12 +24,13 @@ const server = http.createServer((req,res)=>{
                 else{
                         res.statusCode = 200;
                          res.setHeader('content-Type','text/html');
-                          fs.createReadStream(filepath).pipe(res);
+                          fs.createReadStream(filepath).pipe(res);//this method reads the file in the given path and add it to the response body
 
                 }
             });
 
         }
+        
         else{
             res.statusCode = 404;
             res.setHeader('Content-Type', 'text/html');
