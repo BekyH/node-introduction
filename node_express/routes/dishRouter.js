@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const dishRouter = express.Router();
+dishRouter.use(bodyparser.json());
 dishRouter.route('/')
 .all((req,res,next)=>{ // this is common for all the request methods
     res.statusCode = 200;
@@ -21,4 +22,4 @@ dishRouter.route('/')
   .delete((req,res,next)=>{
   res.end('Deleting all the dishes!');
   });
-  
+  module.exports = dishRouter;
