@@ -4,12 +4,16 @@ const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const hostname = 'localhost';
 const dishRouter = require('./routes/dishRouter');
+const promoRouter = require('./routes/promoRouter');
 const port = 3000;
 const app = express();//we are saying that this app uses express module
 app.use(morgan('dev'));
 app.use(bodyparser.json());
 
 app.use('/dishes',dishRouter);
+app.use('/dishes/:dishId',dishRouter);
+app.use('/promos',promoRouter);
+app.use('/promos/:promoId',promoRouter);
 app.use(express.static(__dirname + '/public'));
 app.use((req,res,next)=>{
     console.log(req.headers);
